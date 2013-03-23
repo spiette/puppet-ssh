@@ -1,30 +1,47 @@
 # == Class: ssh
 #
-# Full description of class ssh here.
+# This class will configure ssh server and client
 #
 # === Parameters
 #
-# Document parameters here.
+# Parameters provided by distributions have their own parameters. Other
+# parameters can be set in the $options associative array.
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# [ *options*]
+#   This hash contains all sshd_config options. The following options are set
+#   by default:
+#   - PasswordAuthentication yes
+#   - ChallengeResponseAuthentication no
+#   - GSSAPIAuthentication yes
+#   - GSSAPICleanupCredentials yes
+#   - X11Forwarding yes
 #
 # === Examples
 #
 #  class { ssh:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
+#    client       => absent,
 #  }
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Simon Piette <piette.simon@gmail.com>
 #
 # === Copyright
 #
-# Copyright 2013 Your name here, unless otherwise noted.
+# Copyright 2013 Simon Piette
 #
-class ssh () {
+class ssh (
+  $options = {}
+  ) {
+  $defaultoptions = {
+    'PasswordAuthentication'          => 'yes',
+    'ChallengeResponseAuthentication' => 'no',
+    'GSSAPIAuthentication'            => 'yes',
+    'GSSAPICleanupCredentials'        => 'yes',
+    'X11Forwarding'                   => 'yes',
+  }
+  $alloptions = merge($defaultoptions, $options)
+
   Class["${module_name}::install"]->
   Class["${module_name}::config"]~>
   Class["${module_name}::service"]
