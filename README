@@ -1,0 +1,18 @@
+ssh
+
+This is the ssh module. It manage client and server configurations.
+
+License
+-------
+Apache License, Version 2.0
+
+
+Contact
+-------
+Simon Piette <piette.simon@gmail.com>
+
+
+Support
+-------
+
+Please log tickets and issues at our [github page](https://github.com/spiette/puppet-ssh)
