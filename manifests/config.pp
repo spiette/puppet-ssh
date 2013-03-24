@@ -6,29 +6,17 @@
 # [*options*]
 #   A hash of extra options to set in the configuration
 #
-# === Variables
-#
-#   The following variables are used in the template
-#
-# === Example
-#
-#  class { ssh:
-#    options => {
-#      'key1' => 'value1',
-#      'key2' => 'value2',
-#    }
-#  }
-class ssh::config(
-    $servers=$ssh::servers,
-    $options=$ssh::alloptions,
+class ssh::config (
+    $options=$ssh::mergedserveroptions,
     ) {
   include ssh::params
   validate_hash($options)
 
   file { $ssh::params::conffile:
     ensure  => present,
+    owner   => 'root',
+    group   => 'root',
     mode    => '0440',
     content => template('ssh/sshd_config.erb')
   }
 }
-

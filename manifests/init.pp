@@ -19,7 +19,9 @@
 # === Examples
 #
 #  class { ssh:
-#    client       => absent,
+#    options => {
+#      'PasswordAuthentication' => 'no',
+#    }
 #  }
 #
 # === Authors
@@ -31,21 +33,34 @@
 # Copyright 2013 Simon Piette
 #
 class ssh (
-  $options = {}
+  $client = true,
+  $clientoptions = {},
+  $serveroptions = {},
   ) {
-  $defaultoptions = {
+  $defaultserveroptions = {
     'PasswordAuthentication'          => 'yes',
     'ChallengeResponseAuthentication' => 'no',
     'GSSAPIAuthentication'            => 'yes',
     'GSSAPICleanupCredentials'        => 'yes',
     'X11Forwarding'                   => 'yes',
   }
-  $alloptions = merge($defaultoptions, $options)
+  $defaultclientoptions = {
+    'ForwardX11Trusted'    => 'yes',
+    'GSSAPIAuthentication' => 'yes',
+  }
+  $mergedserveroptions = merge($defaultserveroptions, $serveroptions)
+  $mergedclientoptions = merge($defaultclientoptions, $clientoptions)
 
-  Class["${module_name}::install"]->
-  Class["${module_name}::config"]~>
-  Class["${module_name}::service"]
-  include ssh::install
-  include ssh::config
-  include ssh::service
+  # The ssh::match* defines need to include the ssh class, so we need the anchor
+  anchor { 'ssh::begin': }->
+  class { 'ssh::install': }->
+  class { 'ssh::config': }~>
+  class { 'ssh::service': }~>
+  anchor { 'ssh::end': }
+
+  if $client {
+    include ssh::client
+  } elsif $::osfamily == 'RedHat' {
+    warn('No scp will be available to this host.')
+  }
 }
