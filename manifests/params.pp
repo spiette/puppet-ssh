@@ -18,4 +18,25 @@ class ssh::params {
       fail('unsupported platform')
     }
   }
+  # useprivilegeseparation is only available on openssh 5.8 and later
+  case $::operatingsystem {
+    'Redhat', 'CentOS', 'Scientific', 'Debian': {
+      if $::operatingsystemrelease < '7' {
+        $useprivilegeseparation = 'yes'
+      } else {
+        $useprivilegeseparation = 'sandbox'
+      }
+
+    }
+    'Ubuntu': {
+      if $::operatingsystemrelease < '12' {
+        $useprivilegeseparation = 'yes'
+      } else {
+        $useprivilegeseparation = 'sandbox'
+      }
+    }
+    default: {
+      $useprivilegeseparation = 'sandbox'
+    }
+  }
 }

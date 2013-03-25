@@ -10,13 +10,20 @@ class ssh::config (
     $options=$ssh::mergedserveroptions,
     ) {
   include ssh::params
-  validate_hash($options)
+  include concat::setup
 
-  file { $ssh::params::conffile:
-    ensure  => present,
+  validate_hash($options)
+  $useprivilegeseparation = $ssh::params::useprivilegeseparation
+
+  concat { $ssh::params::conffile:
     owner   => 'root',
     group   => 'root',
     mode    => '0440',
-    content => template('ssh/sshd_config.erb')
+  }
+
+  concat::fragment { $ssh::params::conffile:
+    target  => $ssh::params::conffile,
+    content => template('ssh/sshd_config.erb'),
+    order   => '10',
   }
 }

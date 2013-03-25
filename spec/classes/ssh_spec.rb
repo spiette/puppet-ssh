@@ -12,9 +12,45 @@ clientpackage = {
   'Debian' => 'openssh-client',
 }
 
+# osfamily, operatingsystem, operatingsystemrelease, privilegeseparationvalue
+osmatrix = [
+  [ 'RedHat', 'RedHat', 4.0 , 'yes' ],
+  [ 'RedHat', 'RedHat', 4.3 , 'yes' ],
+  [ 'RedHat', 'RedHat', 5.0 , 'yes' ],
+  [ 'RedHat', 'RedHat', 5.1 , 'yes' ],
+  [ 'RedHat', 'RedHat', 5.9 , 'yes' ],
+  [ 'RedHat', 'RedHat', 5.10 , 'yes' ],
+  [ 'RedHat', 'RedHat', 6.0 , 'yes' ],
+  [ 'RedHat', 'RedHat', 6.4 , 'yes' ],
+  [ 'RedHat', 'RedHat', 7.0 , 'sandbox' ],
+  [ 'RedHat', 'Fedora', 17 , 'sandbox' ],
+  [ 'Debian', 'Debian', 6.0 , 'yes' ],
+  [ 'Debian', 'Debian', 7.0 , 'sandbox' ],
+  [ 'Debian', 'Ubuntu', 8.04 , 'yes' ],
+  [ 'Debian', 'Ubuntu', 10.04 , 'yes' ],
+  [ 'Debian', 'Ubuntu', 12.04 , 'sandbox' ],
+  [ 'Debian', 'Ubuntu', 14.04 , 'sandbox' ],
+]
+
+
 describe 'ssh' do
   let(:title) { 'ssh' }
 
+  osmatrix.each do | osfamily, os, osrelease, privsep |
+    context "UsePrivilegeSeparation: #{os} #{osrelease}" do 
+      let(:params) {{ }}
+      let(:facts) { {
+        :osfamily               => osfamily,
+        :operatingsystem        => os,
+        :operatingsystemrelease => osrelease,
+      } }
+      it { should create_file(serverconfig) }
+      it {
+        should contain_concat__fragment(serverconfig)\
+        .with_content(/^UsePrivilegeSeparation #{privsep}/)\
+      }
+    end
+  end
   ['Debian', 'RedHat'].each do |osfamily|
     context "class without any parameters on #{osfamily}" do 
       let(:params) {{ }}
@@ -25,9 +61,8 @@ describe 'ssh' do
       it { should create_package(serverpackage) }
       it { should create_file(serverconfig) }
       it {
-        should create_file(serverconfig)\
+        should contain_concat__fragment(serverconfig)\
         .with_content(/^PasswordAuthentication yes$/)\
-        .with_content(/^UsePrivilegeSeparation sandbox/)\
         .with_content(/^X11Forwarding yes$/)\
         .with_content(/^GSSAPIAuthentication yes$/)\
         .with_content(/^GSSAPICleanupCredentials yes$/)\
@@ -49,9 +84,8 @@ describe 'ssh' do
       it { should create_package(serverpackage) }
       it { should create_file(serverconfig) }
       it {
-        should create_file(serverconfig)\
+        should contain_concat__fragment(serverconfig)\
         .with_content(/^PasswordAuthentication no$/)\
-        .with_content(/^UsePrivilegeSeparation sandbox/)\
         .with_content(/^X11Forwarding yes$/)\
         .with_content(/^GSSAPIAuthentication yes$/)\
         .with_content(/^GSSAPICleanupCredentials yes$/)\

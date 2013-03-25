@@ -51,7 +51,6 @@ class ssh (
   $mergedserveroptions = merge($defaultserveroptions, $serveroptions)
   $mergedclientoptions = merge($defaultclientoptions, $clientoptions)
 
-  # The ssh::match* defines need to include the ssh class, so we need the anchor
   anchor { 'ssh::begin': }->
   class { 'ssh::install': }->
   class { 'ssh::config': }~>
