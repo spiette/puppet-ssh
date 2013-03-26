@@ -117,7 +117,7 @@ UsePAM yes
 #PrintLastLog yes
 #TCPKeepAlive yes
 #UseLogin no
-UsePrivilegeSeparation <%= useprivilegeseparation %>
+UsePrivilegeSeparation <%= @useprivilegeseparation %>
 #PermitUserEnvironment no
 #Compression delayed
 #ClientAliveInterval 0
@@ -143,7 +143,7 @@ AcceptEnv XMODIFIERS
 Subsystem	sftp	/usr/libexec/openssh/sftp-server
 
 # These options are set by puppet
-<% options.each do | option, value | %>
+<% @options.each do | option, value | %>
 <%= option %> <%= value -%>
 <% end %>
 # Uncomment this if you want to use .local domain
