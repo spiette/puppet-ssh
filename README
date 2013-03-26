@@ -2,7 +2,7 @@ ssh
 
 This is the ssh module. It manage client and server configurations. It supports:
 - Any global sshd_config and ssh_config options
-- Match User defines to confine users to a shell, a chroot, or any
+- Match block defines to confine users, group, etc to a shell, a chroot, or an
   configuration options you can think of.
 
 Requirements
