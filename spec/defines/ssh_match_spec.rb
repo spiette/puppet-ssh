@@ -3,6 +3,27 @@ require 'spec_helper'
 serverconfig = '/etc/ssh/sshd_config'
 describe 'ssh::match', :type => :define do
 
+  context "fail if no params" do
+    let :title do
+      'username'
+    end
+
+    let :facts do
+      { :osfamily               => 'Debian',
+        :operatingsystem        => 'Debian',
+        :operatingsystemrelease => '7',
+      }
+    end
+    let :params do {
+      :type => 'foobar'
+    }
+    end
+    it { expect {
+      should include_class('ssh') }.to\
+        raise_error(Puppet::Error, /Must pass options to/)
+    }
+  end
+
   matchblock = {
     'user'         => 'username',
     'group'        => 'groupname',
