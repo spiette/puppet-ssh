@@ -1,5 +1,5 @@
 Match <%= @type %> <%= @pattern -%>
-<% @options.each do | option, value | %>
-    <%= option %> <%= value -%>
+<% @options.keys.sort.each do | key | %>
+    <%= key %> <%= @options[key] -%>
 <% end %>
 

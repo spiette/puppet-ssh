@@ -143,8 +143,8 @@ AcceptEnv XMODIFIERS
 # Subsystem	sftp	/usr/libexec/openssh/sftp-server
 
 # These options are set by puppet
-<% @options.each do | option, value | %>
-<%= option %> <%= value -%>
+<% @options.keys.sort.each do | key | %>
+<%= key %> <%= @options[key] -%>
 <% end %>
 # Uncomment this if you want to use .local domain
 #Host *.local

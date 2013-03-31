@@ -60,7 +60,7 @@ Host *
 	SendEnv LC_IDENTIFICATION LC_ALL LANGUAGE
 	SendEnv XMODIFIERS
 # The following options are set by puppet, class ssh::client
-<% @options.each do |option, value| %>
-    <%= option %> <%= value -%>
+<% @options.keys.each do |key| %>
+    <%= key %> <%= @options[key] -%>
 <% end %>
 # THIS FILE IS MANAGED BY PUPPET
