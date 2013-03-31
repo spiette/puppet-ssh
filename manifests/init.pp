@@ -7,19 +7,26 @@
 # Parameters provided by distributions have their own parameters. Other
 # parameters can be set in the $options associative array.
 #
-# [ *options*]
+# [ *serveroptions*]
 #   This hash contains all sshd_config options. The following options are set
 #   by default:
+#   - Subsystem sftp internal-sftp
 #   - PasswordAuthentication yes
 #   - ChallengeResponseAuthentication no
 #   - GSSAPIAuthentication yes
 #   - GSSAPICleanupCredentials yes
 #   - X11Forwarding yes
 #
+# [ *clientoptions*]
+#   This hash contains all ssh_config options. The following options are set
+#   by default:
+#   - ForwardX11Trusted yes
+#   - GSSAPIAuthentication yes
+#
 # === Examples
 #
 #  class { ssh:
-#    options => {
+#    serveroptions => {
 #      'PasswordAuthentication' => 'no',
 #    }
 #  }
