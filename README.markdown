@@ -35,8 +35,8 @@ Apache License, Version 2.0
 
 <pre>
 class { 'ssh':
-  options = {
-    'Subsystem'              => 'internal-sftp',
+  serveroptions = {
+    'Subsystem'              => 'sftp internal-sftp',
     'PasswordAuthentication' => 'no',
   }
 }
