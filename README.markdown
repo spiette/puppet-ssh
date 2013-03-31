@@ -9,6 +9,7 @@ This is the ssh module. It manage client and server configurations. It supports:
 
 The following options are set in the default server options parameter
 
+- Subsystem                       => sftp internal-sftp
 - PasswordAuthentication          => yes
 - ChallengeResponseAuthentication => no
 - GSSAPIAuthentication            => yes
@@ -19,6 +20,8 @@ The following options are set in the default client options parameter
 
 - ForwardX11Trusted    => yes
 - GSSAPIAuthentication => yes
+
+ssh::config have a config_template parameter to change the template file.
 
 # Requirements
 
@@ -36,7 +39,6 @@ Apache License, Version 2.0
 <pre>
 class { 'ssh':
   serveroptions = {
-    'Subsystem'              => 'sftp internal-sftp',
     'PasswordAuthentication' => 'no',
   }
 }
