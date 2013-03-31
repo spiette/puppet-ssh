@@ -37,7 +37,7 @@ describe 'ssh' do
   let(:title) { 'ssh' }
 
   osmatrix.each do | osfamily, os, osrelease, privsep |
-    context "UsePrivilegeSeparation: #{os} #{osrelease}" do 
+    context "UsePrivilegeSeparation: #{os} #{osrelease}" do
       let(:params) {{ }}
       let(:facts) { {
         :osfamily               => osfamily,
@@ -52,7 +52,7 @@ describe 'ssh' do
     end
   end
   ['Debian', 'RedHat'].each do |osfamily|
-    context "class without any parameters on #{osfamily}" do 
+    context "class without any parameters on #{osfamily}" do
       let(:params) {{ }}
       let(:facts) { { :osfamily => osfamily } }
 
@@ -69,7 +69,7 @@ describe 'ssh' do
       }
       it { should create_service(service[osfamily]) }
     end
-    context "class with some parameters on #{osfamily}" do 
+    context "class with some parameters on #{osfamily}" do
       let(:params) {
         { :serveroptions => {
             'PasswordAuthentication' => 'no',
@@ -95,7 +95,7 @@ describe 'ssh' do
       it { should create_service(service[osfamily]) }
     end
     # client tests
-    context "client class without parameters on #{osfamily}" do 
+    context "client class without parameters on #{osfamily}" do
       let(:facts) { { :osfamily => osfamily } }
 
       it { should create_class('ssh::client') }
@@ -107,7 +107,7 @@ describe 'ssh' do
         .with_content(/\bForwardX11Trusted yes$/)\
       }
     end
-    context "client class with some parameters on #{osfamily}" do 
+    context "client class with some parameters on #{osfamily}" do
       let(:params) {
         { :clientoptions => {
             'GSSAPIAuthentication' => 'no',
