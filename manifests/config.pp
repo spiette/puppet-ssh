@@ -36,4 +36,13 @@ class ssh::config (
     content => template($sshd_config),
     order   => '10',
   }
+
+  if ! defined(Firewall["0100-INPUT ACCEPT ${options[Port]}"]) {
+    @firewall {
+      "0100-INPUT ACCEPT ${options[Port]}":
+        action => 'accept',
+        dport  => $options[Port],
+        proto  => 'tcp',
+    }
+  }
 }
