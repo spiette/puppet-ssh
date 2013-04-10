@@ -38,7 +38,7 @@ Apache License, Version 2.0
 
 <pre>
 class { 'ssh':
-  serveroptions = {
+  serveroptions => {
     'PasswordAuthentication' => 'no',
   }
 }
@@ -46,14 +46,23 @@ class { 'ssh':
 ssh::match { 'sftpusers':
   type                => 'group',
   options             => {
-    'X11Forwarding'   => 'no',
-    'TCPForwarding'   => 'no',
-    'GatewayPorts'    => 'no',
-    'ForceCommand'    => 'internal-sftp',
-    'ChrootDirectory' => '/srv/www/%u',
+    'X11Forwarding'      => 'no',
+    'AllowTCPForwarding' => 'no',
+    'GatewayPorts'       => 'no',
+    'ForceCommand'       => 'internal-sftp',
+    'ChrootDirectory'    => '/srv/www/%u',
   },
 }
 </pre>
+
+# Tests
+To run tests, you'll need
+
+* rake
+* rspec_puppet
+* puppetlabs_spec_helper
+
+Run `rake` to see all targets, `rake spec` to run tests.
 
 # Contact
 Simon Piette <piette.simon@gmail.com>
