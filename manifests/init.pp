@@ -45,6 +45,7 @@ class ssh (
   $serveroptions = {},
   ) {
   $defaultserveroptions = {
+    'Port'                            => '22',
     'Subsystem'                       => 'sftp    internal-sftp',
     'PasswordAuthentication'          => 'yes',
     'ChallengeResponseAuthentication' => 'no',

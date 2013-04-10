@@ -10,3 +10,4 @@ project_page 'https://github.com/spiette/puppet-ssh'
 ## Add dependencies, if any:
 dependency 'puppetlabs/stdlib', '>= 3.0.0'
 dependency 'ripienaar/concat', '>= 0.2.0'
+dependency 'puppetlabs/firewall', '>= 0.0.4'
