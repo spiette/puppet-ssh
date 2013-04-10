@@ -62,7 +62,7 @@ describe 'ssh::match', :type => :define do
         .with_content(/    X11Forwarding no$/)\
         .with(
           'order'  => '20',
-          'target' => serverconfig,
+          'target' => serverconfig
         )
       }
     end
