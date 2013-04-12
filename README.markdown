@@ -62,7 +62,7 @@ To run tests, you'll need
 * rspec_puppet
 * puppetlabs_spec_helper
 
-Run `rake` to see all targets, `rake spec` to run tests.
+Run `rake help` to see all targets, `rake spec` to run tests.
 
 # Contact
 Simon Piette <piette.simon@gmail.com>
