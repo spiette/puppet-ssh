@@ -1,5 +1,6 @@
 
 # ssh puppet module
+[![Build Status](https://secure.travis-ci.org/spiette/puppet-ssh.png?branch=master)](http://travis-ci.org/spiette/puppet-ssh)
 
 This is the ssh module. It manage client and server configurations. It supports:
 
