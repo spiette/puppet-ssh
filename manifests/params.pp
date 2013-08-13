@@ -21,7 +21,7 @@ class ssh::params {
   # useprivilegeseparation is only available on openssh 5.8 and later
   case $::operatingsystem {
     'Redhat', 'CentOS', 'Scientific', 'Debian': {
-      if $::operatingsystemrelease < '7' {
+      if $::operatingsystemmajrelease < 7 {
         $useprivilegeseparation = 'yes'
       } else {
         $useprivilegeseparation = 'sandbox'
@@ -29,7 +29,7 @@ class ssh::params {
 
     }
     'Ubuntu': {
-      if $::operatingsystemrelease < '12' {
+      if $::operatingsystemmajrelease < 12 {
         $useprivilegeseparation = 'yes'
       } else {
         $useprivilegeseparation = 'sandbox'
