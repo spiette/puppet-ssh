@@ -40,6 +40,7 @@ describe 'ssh' do
     context "UsePrivilegeSeparation: #{os} #{osrelease}" do
       let(:params) {{ }}
       let(:facts) { {
+        :concat_basedir         => '/dne',
         :osfamily               => osfamily,
         :operatingsystem        => os,
         :operatingsystemrelease => osrelease,
@@ -54,7 +55,10 @@ describe 'ssh' do
   ['Debian', 'RedHat'].each do |osfamily|
     context "class without any parameters on #{osfamily}" do
       let(:params) {{ }}
-      let(:facts) { { :osfamily => osfamily } }
+      let(:facts) { {
+        :concat_basedir => '/dne',
+        :osfamily       => osfamily
+      } }
 
 
       it { should create_class('ssh') }
@@ -78,7 +82,10 @@ describe 'ssh' do
           }
         }
       }
-      let(:facts) { { :osfamily => osfamily } }
+      let(:facts) { {
+        :concat_basedir => '/dne',
+        :osfamily       => osfamily
+      } }
 
       it { should create_class('ssh') }
       it { should create_package(serverpackage) }
@@ -96,7 +103,10 @@ describe 'ssh' do
     end
     # client tests
     context "client class without parameters on #{osfamily}" do
-      let(:facts) { { :osfamily => osfamily } }
+      let(:facts) { {
+        :concat_basedir => '/dne',
+        :osfamily       => osfamily
+      } }
 
       it { should create_class('ssh::client') }
       it { should create_package(clientpackage[osfamily]) }
@@ -115,7 +125,10 @@ describe 'ssh' do
           }
         }
       }
-      let(:facts) { { :osfamily => osfamily } }
+      let(:facts) { {
+        :concat_basedir => '/dne',
+        :osfamily       => osfamily
+      } }
 
       it { should create_class('ssh::client') }
       it { should create_package(clientpackage[osfamily]) }

@@ -3,7 +3,12 @@ require 'spec_helper'
 describe 'ssh::install' do
   let(:title) { 'ssh::install' }
 
+      let(:facts) { {
+        :concat_basedir => '/dne',
+        :osfamily       => osfamily
+      } }
   let(:facts) { {
+    :concat_basedir         => '/dne',
     :osfamily               => 'Debian',
     :operatingsystem        => 'Debian',
     :operatingsystemrelease => '7',

@@ -9,7 +9,9 @@ describe 'ssh::match', :type => :define do
     end
 
     let :facts do
-      { :osfamily               => 'Debian',
+      {
+        :concat_basedir         => '/dne',
+        :osfamily               => 'Debian',
         :operatingsystem        => 'Debian',
         :operatingsystemrelease => '7',
       }
@@ -39,10 +41,12 @@ describe 'ssh::match', :type => :define do
       end
 
       let :facts do
-        { :osfamily               => 'Debian',
-          :operatingsystem        => 'Debian',
-          :operatingsystemrelease => '7',
-        }
+      {
+        :concat_basedir         => '/dne',
+        :osfamily               => 'Debian',
+        :operatingsystem        => 'Debian',
+        :operatingsystemrelease => '7',
+      }
       end
       let :params do
         {

@@ -18,7 +18,10 @@ describe 'ssh::client' do
           }
         }
       }
-      let(:facts) { { :osfamily => osfamily } }
+      let(:facts) { {
+        :concat_basedir => '/dne',
+        :osfamily       => osfamily
+      } }
 
       it { should create_class('ssh::client') }
       it { should create_package(package[osfamily]) }
