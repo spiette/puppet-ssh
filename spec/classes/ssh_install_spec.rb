@@ -8,10 +8,11 @@ describe 'ssh::install' do
         :osfamily       => osfamily
       } }
   let(:facts) { {
-    :concat_basedir         => '/dne',
-    :osfamily               => 'Debian',
-    :operatingsystem        => 'Debian',
-    :operatingsystemrelease => '7',
+    :concat_basedir            => '/dne',
+    :osfamily                  => 'Debian',
+    :operatingsystem           => 'Debian',
+    :operatingsystemrelease    => 7.1,
+    :operatingsystemmajrelease => '7',
   } }
 
   context "no autoupdate" do

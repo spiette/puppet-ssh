@@ -40,10 +40,11 @@ describe 'ssh' do
     context "UsePrivilegeSeparation: #{os} #{osrelease}" do
       let(:params) {{ }}
       let(:facts) { {
-        :concat_basedir         => '/dne',
-        :osfamily               => osfamily,
-        :operatingsystem        => os,
-        :operatingsystemrelease => osrelease,
+        :concat_basedir            => '/dne',
+        :osfamily                  => osfamily,
+        :operatingsystem           => os,
+        :operatingsystemrelease    => osrelease,
+        :operatingsystemmajrelease => osrelease.round,
       } }
       it { should create_file(serverconfig) }
       it {
