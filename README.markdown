@@ -28,6 +28,7 @@ ssh::config have a config_template parameter to change the template file.
 
 - puppetlabs/stdlib >= 3.0.0
 - ripienarr/concat >= 0.2.0
+- facter >= 1.7.3
 
 # OS
 - RedHat and Debian OS family are supported.
