@@ -16,6 +16,7 @@
 #   - GSSAPIAuthentication yes
 #   - GSSAPICleanupCredentials yes
 #   - X11Forwarding yes
+#   - AuthorizedKeysFile .ssh/authorized_keys
 #
 # [ *clientoptions*]
 #   This hash contains all ssh_config options. The following options are set
@@ -51,6 +52,7 @@ class ssh (
     'GSSAPIAuthentication'            => 'yes',
     'GSSAPICleanupCredentials'        => 'yes',
     'X11Forwarding'                   => 'yes',
+    'AuthorizedKeysFile'              => '.ssh/authorized_keys',
   }
   $defaultclientoptions = {
     'ForwardX11Trusted'    => 'yes',
