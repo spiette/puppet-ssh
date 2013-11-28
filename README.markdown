@@ -16,6 +16,7 @@ The following options are set in the default server options parameter
 - GSSAPIAuthentication            => yes
 - GSSAPICleanupCredentials        => yes
 - X11Forwarding                   => yes
+- AuthorizedKeysFile              => .ssh/authorized_keys
 
 The following options are set in the default client options parameter
 
