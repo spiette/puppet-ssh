@@ -18,7 +18,7 @@ class ssh::params {
       fail('unsupported platform')
     }
   }
-  # useprivilegeseparation is only available on openssh 5.8 and later
+  # useprivilegeseparation = sanbox is only available on openssh 5.8 and later
   case $::operatingsystem {
     'Redhat', 'CentOS', 'Scientific', 'Debian': {
       if $::operatingsystemmajrelease < 7 {
