@@ -29,7 +29,7 @@ class ssh::params {
 
     }
     'Ubuntu': {
-      if $::operatingsystemmajrelease < 12 {
+      if $::lsbmajdistrelease < 12 {
         $useprivilegeseparation = 'yes'
       } else {
         $useprivilegeseparation = 'sandbox'
