@@ -1,5 +1,12 @@
-Match <%= @type %> <%= @pattern -%>
-<% @options.keys.sort.each do | key | %>
-    <%= key %> <%= @options[key] -%>
+<% if @type -%>
+<%=  "Match #{@type} #{@pattern}" -%>
+<% else -%>
+<%=  "Match" -%>
+<%   @conditions.keys.sort.each do |type| -%>
+<%=    " #{type} #{@conditions[type]}" -%>
+<%   end -%>
+<% end -%>
+<% @options.keys.sort.each do | key | -%>
+<%= "\n    #{key} #{@options[key]}" -%>
 <% end %>
 
