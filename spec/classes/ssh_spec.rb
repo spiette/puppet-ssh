@@ -90,8 +90,12 @@ describe 'ssh' do
       } }
 
       it { should create_class('ssh') }
+      it { should create_class('ssh::install') }
+      it { should create_class('ssh::config') }
+      it { should create_class('ssh::service') }
       it { should create_package(serverpackage) }
       it { should create_file(serverconfig) }
+      it { should contain_concat(serverconfig) }
       it {
         should contain_concat__fragment(serverconfig)\
         .with_content(/^PasswordAuthentication no$/)\

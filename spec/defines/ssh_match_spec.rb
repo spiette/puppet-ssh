@@ -22,7 +22,7 @@ describe 'ssh::match', :type => :define do
     }
     end
     it { expect {
-      should include_class('ssh') }.to\
+      should contain_class('ssh') }.to\
         raise_error(Puppet::Error, /Must pass options to/)
     }
   end
@@ -60,7 +60,8 @@ describe 'ssh::match', :type => :define do
         }
       end
 
-      it { should include_class('ssh') }
+      it { should contain_class('ssh') }
+      it { should contain_ssh__match(pattern)}
       it { should contain_ssh__params }
       it {
         should contain_concat__fragment("ssh_match_#{type}_#{pattern}")\
