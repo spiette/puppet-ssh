@@ -19,9 +19,9 @@ class ssh::config (
   $useprivilegeseparation = $ssh::params::useprivilegeseparation
 
   concat { $ssh::params::conffile:
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0440',
+    owner => 'root',
+    group => 'root',
+    mode  => '0440',
   }
 
   if $config_template == undef {
