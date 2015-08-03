@@ -14,7 +14,6 @@ class ssh::config (
   $config_template = undef,
   ) {
   include ssh::params
-  include concat::setup
 
   validate_hash($options)
   $useprivilegeseparation = $ssh::params::useprivilegeseparation
