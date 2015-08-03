@@ -23,6 +23,7 @@ osmatrix = [
   [ 'RedHat', 'RedHat', 6.0 , 'yes' ],
   [ 'RedHat', 'RedHat', 6.4 , 'yes' ],
   [ 'RedHat', 'RedHat', 7.0 , 'sandbox' ],
+  [ 'RedHat', 'RedHat', 7.1 , 'sandbox' ],
   [ 'RedHat', 'Fedora', 17 , 'sandbox' ],
   [ 'Debian', 'Debian', 6.0 , 'yes' ],
   [ 'Debian', 'Debian', 7.0 , 'sandbox' ],
@@ -43,8 +44,8 @@ describe 'ssh' do
         :concat_basedir            => '/dne',
         :osfamily                  => osfamily,
         :operatingsystem           => os,
-        :operatingsystemrelease    => osrelease,
-        :operatingsystemmajrelease => osrelease.round,
+        :operatingsystemrelease    => osrelease.to_s,
+        :operatingsystemmajrelease => osrelease.round.to_s,
       } }
       it { should create_file(serverconfig) }
       it {

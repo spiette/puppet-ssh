@@ -21,7 +21,7 @@ class ssh::params {
   # useprivilegeseparation = sanbox is only available on openssh 5.8 and later
   case $::operatingsystem {
     'Redhat', 'CentOS', 'Scientific', 'Debian': {
-      if $::operatingsystemmajrelease < 7 {
+      if versioncmp($::operatingsystemrelease, '7') < 0 {
         $useprivilegeseparation = 'yes'
       } else {
         $useprivilegeseparation = 'sandbox'
@@ -29,7 +29,7 @@ class ssh::params {
 
     }
     'Ubuntu': {
-      if $::operatingsystemmajrelease < 12 {
+      if versioncmp($::operatingsystemrelease, '12') < 0 {
         $useprivilegeseparation = 'yes'
       } else {
         $useprivilegeseparation = 'sandbox'

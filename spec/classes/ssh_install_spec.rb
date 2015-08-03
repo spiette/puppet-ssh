@@ -11,7 +11,7 @@ describe 'ssh::install' do
     :concat_basedir            => '/dne',
     :osfamily                  => 'Debian',
     :operatingsystem           => 'Debian',
-    :operatingsystemrelease    => 7.1,
+    :operatingsystemrelease    => '7.1',
     :operatingsystemmajrelease => '7',
   } }
 
