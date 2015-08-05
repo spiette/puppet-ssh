@@ -13,3 +13,4 @@ gem 'puppetlabs_spec_helper'
 gem 'puppet', puppetversion
 gem 'puppet-blacksmith'
 gem 'metadata-json-lint'
+gem 'puppet_spec_facts'
