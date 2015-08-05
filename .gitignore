@@ -4,3 +4,4 @@ spec/fixtures
 .rake_tasks~
 .bundle
 Gemfile.lock
+log
