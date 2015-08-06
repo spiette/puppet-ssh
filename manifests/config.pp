@@ -21,7 +21,7 @@ class ssh::config (
   concat { $ssh::params::conffile:
     owner => 'root',
     group => 'root',
-    mode  => '0440',
+    mode  => '0400',
   }
 
   if $config_template == undef {
