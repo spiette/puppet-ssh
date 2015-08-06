@@ -1,6 +1,6 @@
 {
   "name": "spiette-ssh",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": "Simon Piette <piette.simon@gmail.com>",
   "summary": "openssh server and client configuration",
   "license": "Apache-2.0",
@@ -10,20 +10,38 @@
   "description": "openssh server and client configuration",
   "operatingsystem_support": [
     {
-      "operatingsystem":"RedHat",
-      "operatingsystemrelease":[ "5.0", "6.5", "7.0", "7.1" ]
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5.0",
+        "6.5",
+        "7.0",
+        "7.1"
+      ]
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ "14.04", "12.04", "10.04" ]
+      "operatingsystemrelease": [
+        "14.04",
+        "12.04",
+        "10.04"
+      ]
     },
     {
       "operatingsystem": "Debian",
-      "operatingsystemrelease": [ "7.0", "8.0" ]
+      "operatingsystemrelease": [
+        "7.0",
+        "8.0"
+      ]
     }
   ],
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 3.0.0"},
-    {"name":"puppetlabs/concat","version_requirement":">= 1.1.2"}
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 3.0.0"
+    },
+    {
+      "name": "puppetlabs/concat",
+      "version_requirement": ">= 1.1.2"
+    }
   ]
 }
