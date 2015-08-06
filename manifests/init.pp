@@ -47,6 +47,7 @@ class ssh (
   ) {
   $defaultserveroptions = {
     'AuthorizedKeysFile'              => '.ssh/authorized_keys',
+    'UsePAM'                          => 'yes',
     'Subsystem'                       => 'sftp    internal-sftp',
     'PasswordAuthentication'          => 'yes',
     'ChallengeResponseAuthentication' => 'no',
