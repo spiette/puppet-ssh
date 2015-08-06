@@ -27,8 +27,9 @@ ssh::config have a config_template parameter to change the template file.
 # Requirements
 
 - puppetlabs/stdlib >= 3.0.0
-- ripienarr/concat >= 0.2.0
+- puppetlabs/concat >= 1.1.2
 - facter >= 1.7.3
+- puppet 3.x ([This](https://tickets.puppetlabs.com/browse/PUP-4780) bug prevent puppet 4.x support)
 
 # OS
 - RedHat and Debian OS family are supported.
@@ -63,6 +64,8 @@ To run tests, you'll need
 * rake
 * rspec_puppet
 * puppetlabs_spec_helper
+* puppet_spec_facts
+* puppet-blacksmith
 
 Run `rake help` to see all targets, `rake spec` to run tests.
 
