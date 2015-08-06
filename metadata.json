@@ -1,6 +1,6 @@
 {
   "name": "spiette-ssh",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "Simon Piette <piette.simon@gmail.com>",
   "summary": "openssh server and client configuration",
   "license": "Apache-2.0",
