@@ -10,6 +10,7 @@ This is the ssh module. It manage client and server configurations. It supports:
 
 The following options are set in the default server options parameter
 
+- AuthorizedKeysFile              => .ssh/authorized_keys
 - Subsystem                       => sftp internal-sftp
 - PasswordAuthentication          => yes
 - ChallengeResponseAuthentication => no

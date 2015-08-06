@@ -10,6 +10,7 @@
 # [ *serveroptions*]
 #   This hash contains all sshd_config options. The following options are set
 #   by default:
+#   - AuthorizedKeysFile .ssh/authorized_keys
 #   - Subsystem sftp internal-sftp
 #   - PasswordAuthentication yes
 #   - ChallengeResponseAuthentication no
@@ -45,6 +46,7 @@ class ssh (
   $serveroptions = {},
   ) {
   $defaultserveroptions = {
+    'AuthorizedKeysFile'              => '.ssh/authorized_keys',
     'Subsystem'                       => 'sftp    internal-sftp',
     'PasswordAuthentication'          => 'yes',
     'ChallengeResponseAuthentication' => 'no',
