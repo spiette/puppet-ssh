@@ -47,7 +47,7 @@ describe 'ssh' do
         :operatingsystemrelease    => osrelease.to_s,
         :operatingsystemmajrelease => osrelease.round.to_s,
       } }
-      it { should create_file(serverconfig).with( 'mode' => '0400') }
+      it { should create_concat(serverconfig).with( 'mode' => '0400') }
       it {
         should contain_concat__fragment(serverconfig)\
         .with_content(/^UsePrivilegeSeparation #{privsep}/)\
@@ -65,7 +65,7 @@ describe 'ssh' do
 
       it { should create_class('ssh') }
       it { should create_package(serverpackage) }
-      it { should create_file(serverconfig).with( 'mode' => '0400') }
+      it { should create_concat(serverconfig).with( 'mode' => '0400') }
       it {
         should contain_concat__fragment(serverconfig)\
         .with_content(/^PasswordAuthentication yes$/)\
@@ -94,7 +94,7 @@ describe 'ssh' do
       it { should create_class('ssh::config') }
       it { should create_class('ssh::service') }
       it { should create_package(serverpackage) }
-      it { should create_file(serverconfig).with( 'mode' => '0400') }
+      it { should create_concat(serverconfig).with( 'mode' => '0400') }
       it { should contain_concat(serverconfig) }
       it {
         should contain_concat__fragment(serverconfig)\
