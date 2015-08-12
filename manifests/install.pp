@@ -10,7 +10,7 @@ class ssh::install (
     true    => latest,
     default => fail('autoupdate should be true or false')
   }
-  package { $ssh::params::pkgname:
+  ensure_packages([$ssh::params::pkgname], {
     ensure => $ensure,
-  }
+  } )
 }

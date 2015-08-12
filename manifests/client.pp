@@ -36,9 +36,9 @@ class ssh::client (
   Package[$ssh::params::clientpkgname]->
   File[$ssh::params::clientconffile]
 
-  package { $ssh::params::clientpkgname:
+  ensure_packages([$ssh::params::clientpkgname], {
     ensure => present,
-  }
+  } )
 
   file { $ssh::params::clientconffile:
     ensure  => present,
