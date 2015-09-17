@@ -28,6 +28,9 @@ class ssh::params {
       }
 
     }
+    'XenServer': {
+      $useprivilegeseparation = 'yes'
+    }
     'Ubuntu': {
       if versioncmp($::operatingsystemrelease, '12') < 0 {
         $useprivilegeseparation = 'yes'
